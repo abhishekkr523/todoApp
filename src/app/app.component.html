@@ -1,11 +1,12 @@
 <div class="todo">
   <div class="container">
-    <h1> <span>🙌 </span>Getting started</h1>
+    <h1> <span>🙌 </span>Getting Started</h1>
     <div class="addData">
       <div class="addbtn">
-      <input id="addtask" type="text" #inputValue placeholder="add task" [value]="editedTodo"  >
-      <button class="addicon" (click)="addTask(inputValue)"><img src="/assets/plus-solid.svg" alt=""></button>
-    </div>
+        <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name"  >
+        <input id="addtask" type="date" [(ngModel)]="taskDate"  min="2024-01-11" max="2024-02-11">
+        <button class="addicon" (click)="addTask(taskName, taskDate)"><img src="/assets/plus-solid.svg" alt=""></button>
+      </div>
       <div class="sms">
         <p>{{message}}</p>
       </div>
@@ -13,13 +14,15 @@
     <table>
       <tbody>
         <tr>
-          <th>added task</th>
+          <th>Added Task</th>
         </tr>
         <tr class="action-area" *ngFor="let task of taskArray let i=index ">
           <input id="check" type="checkbox" (click)="doFinish(i)">
-          <td id="task">{{task}}</td>
+          <td id="task">{{task.name}}</td>
+          <td id="task">{{task.taskDate}}</td>
           <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
-          <button class="prev_button button" (click)="editTask(i)"><img src="/assets/user-pen-solid.svg" alt=""></button>
+          <button class="prev_button button" (click)="editTask(i)"><img src="/assets/user-pen-solid.svg"
+              alt=""></button>
         </tr>
       </tbody>
     </table>
@@ -27,17 +30,14 @@
     <table>
       <tbody>
         <tr>
-          <th>finish task</th>
+          <th>Finish Task</th>
         </tr>
         <tr *ngFor="let task of finishTask let i=index ">
           <input id="check" type="checkbox" checked (click)="doUnfinish(i)">
-          <td id="task"> <s>{{task}}</s> </td>
+          <td id="task"> <s>{{task.name}}</s> </td>
+          <td id="task"> <s>{{task.taskDate}}</s> </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-
-
-

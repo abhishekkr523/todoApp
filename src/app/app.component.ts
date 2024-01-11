@@ -1,79 +1,75 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'todoapp';
   taskArray: any[] = [];
   finishTask: any[] = [];
   edit: any | null = null;
   message: any;
-  editedTodo: string = '';
+  taskName: string = '';
+  taskDate: string = '';
 
   // Load data from local storage when the component initializes
   ngOnInit() {
     this.loadDataFromLocalStorage();
   }
 
-  addTask(inputValue: any) {
-    const newTask = inputValue.value.trim().charAt(0).toUpperCase() + inputValue.value.trim().slice(1);
-    
+  addTask(name: string, taskDate: string) {
+    const newName = name.charAt(0).toUpperCase() + name.slice(1).replace(/\s+/g, '');
+    const newDate = taskDate.trim();
+
     if (this.edit !== null) {
-      // Update existing todo
-      if (this.editedTodo.trim() !== '') {
-        this.taskArray[this.edit] = push(newTask);
-        this.edit = "";
-        this.editedTodo = "";
-        console.log("ss",this.taskArray[this.edit])
-      }
+      this.taskArray[this.edit] = { name: newName, taskDate: newDate };
+      this.edit = null;
     } else {
-
-    
-    if (newTask.length <= 0) {
-      this.message = "Please enter task"
-    }
-    if (newTask.length > 10) {
-      this.message = "please enter between 1 to 10 character";
-    }
-    if (newTask.length >= 1 && newTask.length <= 10) {
-      this.taskArray.push(newTask);
-      this.saveDataToLocalStorage();
-      console.log(this.taskArray);
-      inputValue.value = '';
-      this.message = "";
-      alert("Task added successfully")
-    }
+      if (newName.length <= 0) {
+        this.message = 'Please enter task name.';
+      } else if (newDate.length <= 0) {
+        this.message = 'Please enter task date.';
+      } else if(newName.length > 10){
+        this.message = 'Task should be between 1 to 10 character.';
+      }else{
+        
+        console.log("digit",newName.length)
+        const newTask = { name: newName, taskDate: newDate };
+        this.taskArray.push(newTask);
+        this.saveDataToLocalStorage();
+        this.taskName = ''; // Clear input field
+        this.taskDate = ''; // Clear input field
+        this.message = '';
+        alert('Task added successfully');
+      }
     }
   }
 
-  editTask(i: any) {
+  editTask(i: number) {
     this.edit = i;
-    console.log("hii", this.edit);
-    this.editedTodo = this.taskArray[i];
-    console.log(this.editedTodo)
+    console.log("i", this.edit)
+    this.taskName = this.taskArray[i].name;
+    this.taskDate = this.taskArray[i].taskDate;
   }
 
-
-  deleteTask(index: any) {
+  deleteTask(index: number) {
     this.taskArray.splice(index, 1);
-    this.saveDataToLocalStorage(); // Save data to local storage after deleting a task
+    this.saveDataToLocalStorage();
   }
 
-  doFinish(i: any) {
+  doFinish(i: number) {
     const taskToMove = this.taskArray.splice(i, 1)[0];
     this.finishTask.push(taskToMove);
-    this.saveDataToLocalStorage(); // Save data to local storage after moving a task to finishTask
+    this.saveDataToLocalStorage();
   }
 
-  doUnfinish(i: any) {
+  doUnfinish(i: number) {
     const taskToMove = this.finishTask.splice(i, 1)[0];
     this.taskArray.push(taskToMove);
-    this.saveDataToLocalStorage(); // Save data to local storage after moving a task from finishTask
+    this.saveDataToLocalStorage();
   }
-
 
   // Save data to local storage
   saveDataToLocalStorage() {
@@ -95,8 +91,3 @@ export class AppComponent {
     }
   }
 }
-
-function push(newTask: any): any {
-  throw new Error('Function not implemented.');
-}
-
