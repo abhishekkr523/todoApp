@@ -20,8 +20,18 @@ export class AppComponent implements OnInit {
   }
 
   addTask(name: string, taskDate: string) {
-    const newName = name.charAt(0).toUpperCase() + name.slice(1).replace(/\s+/g, '');
+    const newName = name.replace(/\s+/g, '');
+    const newNameWithSpace = name.charAt(0).toUpperCase() + name.slice(1);
     const newDate = taskDate.trim();
+
+    const currentDate = new Date();
+    const selectedDate = new Date(newDate);
+
+    if (selectedDate < currentDate) {
+      // Date is in the past, show an error message or take appropriate action
+      alert('Please select a date in the present or future.');
+      return;
+    }
 
     if (this.edit !== null) {
       this.taskArray[this.edit] = { name: newName, taskDate: newDate };
@@ -36,7 +46,7 @@ export class AppComponent implements OnInit {
       }else{
         
         console.log("digit",newName.length)
-        const newTask = { name: newName, taskDate: newDate };
+        const newTask = { name: newNameWithSpace, taskDate: newDate };
         this.taskArray.push(newTask);
         this.saveDataToLocalStorage();
         this.taskName = ''; // Clear input field
@@ -90,4 +100,7 @@ export class AppComponent implements OnInit {
       this.finishTask = JSON.parse(storedFinishTask);
     }
   }
+
+  
+  
 }

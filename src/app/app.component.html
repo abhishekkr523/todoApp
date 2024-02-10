@@ -1,11 +1,17 @@
 <div class="todo">
   <div class="container">
     <h1> <span>🙌 </span>Getting Started</h1>
+    <div id="typewriter"></div>
+
     <div class="addData">
       <div class="addbtn">
+        <div class="groupInput">
         <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name"  >
-        <input id="addtask" type="date" [(ngModel)]="taskDate"  min="2024-01-11" max="2024-02-11">
+        <input id="addtask" type="date" [(ngModel)]="taskDate">
+      </div>
+      <div class="groupBtn">
         <button class="addicon" (click)="addTask(taskName, taskDate)"><img src="/assets/plus-solid.svg" alt=""></button>
+      </div>
       </div>
       <div class="sms">
         <p>{{message}}</p>
@@ -16,7 +22,7 @@
         <tr>
           <th>Added Task</th>
         </tr>
-        <tr class="action-area" *ngFor="let task of taskArray let i=index ">
+        <tr class="action-area" class="hoverEffect" *ngFor="let task of taskArray let i=index ">
           <input id="check" type="checkbox" (click)="doFinish(i)">
           <td id="task">{{task.name}}</td>
           <td id="task">{{task.taskDate}}</td>
@@ -32,7 +38,7 @@
         <tr>
           <th>Finish Task</th>
         </tr>
-        <tr *ngFor="let task of finishTask let i=index ">
+        <tr class="hoverEffect" *ngFor="let task of finishTask let i=index ">
           <input id="check" type="checkbox" checked (click)="doUnfinish(i)">
           <td id="task"> <s>{{task.name}}</s> </td>
           <td id="task"> <s>{{task.taskDate}}</s> </td>
