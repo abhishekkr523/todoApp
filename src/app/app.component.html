@@ -6,12 +6,14 @@
     <div class="addData">
       <div class="addbtn">
         <div class="groupInput">
-        <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name"  >
-        <input id="addtask" type="date" [(ngModel)]="taskDate">
-      </div>
-      <div class="groupBtn">
-        <button class="addicon" (click)="addTask(taskName, taskDate)"><img src="/assets/plus-solid.svg" alt=""></button>
-      </div>
+          <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name">
+          <input id="addtask" type="date" name="taskDate" [min]="minDate" [(ngModel)]="taskDate">
+          
+        </div>
+        <div class="groupBtn">
+          <button class="addicon" (click)="addTask(taskName, taskDate)"><img src="/assets/plus-solid.svg"
+              alt=""></button>
+        </div>
       </div>
       <div class="sms">
         <p>{{message}}</p>

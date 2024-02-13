@@ -13,7 +13,12 @@ export class AppComponent implements OnInit {
   message: any;
   taskName: string = '';
   taskDate: string = '';
+  minDate: any;
 
+  constructor() {
+    // Initialize minDate to the current date
+    this.minDate = new Date().toISOString().split('T')[0];
+  }
   // Load data from local storage when the component initializes
   ngOnInit() {
     this.loadDataFromLocalStorage();
@@ -34,18 +39,32 @@ export class AppComponent implements OnInit {
     }
 
     if (this.edit !== null) {
-      this.taskArray[this.edit] = { name: newName, taskDate: newDate };
-      this.edit = null;
+      if (newName.length <= 0) {
+        this.message = 'Please enter task name.';
+      } else if (newDate.length <= 0) {
+        this.message = 'Please enter task date.';
+      } else if (newName.length > 10) {
+        this.message = 'Task should be between 1 to 10 character.';
+      } else {
+        this.taskArray[this.edit] = { name: newNameWithSpace, taskDate: newDate };
+        console.log("check", this.taskArray)
+        this.edit = null;
+        this.taskName = ''; // Clear input field
+        this.taskDate = ''; // Clear input field
+        this.message = '';
+        this.saveDataToLocalStorage();
+        alert('Task added successfully');
+      }
     } else {
       if (newName.length <= 0) {
         this.message = 'Please enter task name.';
       } else if (newDate.length <= 0) {
         this.message = 'Please enter task date.';
-      } else if(newName.length > 10){
+      } else if (newName.length > 10) {
         this.message = 'Task should be between 1 to 10 character.';
-      }else{
-        
-        console.log("digit",newName.length)
+      } else {
+
+        console.log("digit", newName.length)
         const newTask = { name: newNameWithSpace, taskDate: newDate };
         this.taskArray.push(newTask);
         this.saveDataToLocalStorage();
@@ -53,6 +72,7 @@ export class AppComponent implements OnInit {
         this.taskDate = ''; // Clear input field
         this.message = '';
         alert('Task added successfully');
+        taskDate
       }
     }
   }
@@ -101,6 +121,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  
-  
+
+
 }
