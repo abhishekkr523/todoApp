@@ -109,13 +109,14 @@
 
 
 
-.button {
+button {
     //     background-color: #fd878d;
     //     border-radius: 50%;
     //     height: 50px;
     //     width: 50px;
     padding: 5px;
     margin: 15px;
+    cursor: pointer;
     //     display: flex;
     //     align-items: center;
     //     justify-content: center;
@@ -131,9 +132,7 @@
 //     border: 4px solid #ffffff;
 //     border-radius: inherit;
 // }
-.addicon img {
-    height: 20px;
-}
+
 
 .sms {
     color: rgb(223, 63, 63);

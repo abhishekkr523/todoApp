@@ -1,0 +1,36 @@
+.addData{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addbtn{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.groupBtn{
+    padding-top: 10pxng ;
+}
+.groupinput{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+mat-dialog-actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+mat-form-field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}

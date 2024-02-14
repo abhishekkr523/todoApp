@@ -3,23 +3,28 @@
     <h1> <span>🙌 </span>Getting Started</h1>
     <div id="typewriter"></div>
 
-    <div class="addData">
+    <!-- <div class="addData">
       <div class="addbtn">
         <div class="groupInput">
           <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name">
           <input id="addtask" type="date" name="taskDate" [min]="minDate" [(ngModel)]="taskDate">
-          
+
         </div>
         <div class="groupBtn">
-          <button class="addicon" (click)="addTask(taskName, taskDate)"><img src="/assets/plus-solid.svg"
-              alt=""></button>
+          <button class="addicon" (click)="addTask(taskName, taskDate)">
+            {{ isEditing ? 'Update Task' : 'Add Task' }}
+          </button>
         </div>
       </div>
       <div class="sms">
         <p>{{message}}</p>
       </div>
-    </div>
-    <table>
+    </div> -->
+    <button mat-raised-button (click)="openDialog()">Open dialog</button>
+
+    <app-added-task [finish]="finishTask" [taskArray]="taskArray" [edit]="edit" [taskName]="taskName"
+      [taskDate]="taskDate" (updateDataEvent)="updateData($event)" (addToUpdate)="updateData($event)"></app-added-task>
+    <!-- <table>
       <tbody>
         <tr>
           <th>Added Task</th>
@@ -33,9 +38,10 @@
               alt=""></button>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
-    <table>
+    <app-finish-task [finish]="finishTask" [taskArray]="taskArray"></app-finish-task>
+    <!-- <table>
       <tbody>
         <tr>
           <th>Finish Task</th>
@@ -46,6 +52,6 @@
           <td id="task"> <s>{{task.taskDate}}</s> </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
   </div>
 </div>
