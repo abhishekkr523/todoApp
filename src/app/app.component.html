@@ -3,55 +3,14 @@
     <h1> <span>🙌 </span>Getting Started</h1>
     <div id="typewriter"></div>
 
-    <!-- <div class="addData">
-      <div class="addbtn">
-        <div class="groupInput">
-          <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name">
-          <input id="addtask" type="date" name="taskDate" [min]="minDate" [(ngModel)]="taskDate">
 
-        </div>
-        <div class="groupBtn">
-          <button class="addicon" (click)="addTask(taskName, taskDate)">
-            {{ isEditing ? 'Update Task' : 'Add Task' }}
-          </button>
-        </div>
-      </div>
-      <div class="sms">
-        <p>{{message}}</p>
-      </div>
-    </div> -->
     <button mat-raised-button (click)="openDialog()">Open dialog</button>
 
-    <app-added-task [finish]="finishTask" [taskArray]="taskArray" [edit]="edit" [taskName]="taskName"
-      [taskDate]="taskDate" (updateDataEvent)="updateData($event)" (addToUpdate)="updateData($event)"></app-added-task>
-    <!-- <table>
-      <tbody>
-        <tr>
-          <th>Added Task</th>
-        </tr>
-        <tr class="action-area" class="hoverEffect" *ngFor="let task of taskArray let i=index ">
-          <input id="check" type="checkbox" (click)="doFinish(i)">
-          <td id="task">{{task.name}}</td>
-          <td id="task">{{task.taskDate}}</td>
-          <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
-          <button class="prev_button button" (click)="editTask(i)"><img src="/assets/user-pen-solid.svg"
-              alt=""></button>
-        </tr>
-      </tbody>
-    </table> -->
+    <app-added-task [finish]="finishTask" [taskArray]="taskArray" [taskName]="taskName"
+      [taskDate]="taskDate" ></app-added-task>
+
 
     <app-finish-task [finish]="finishTask" [taskArray]="taskArray"></app-finish-task>
-    <!-- <table>
-      <tbody>
-        <tr>
-          <th>Finish Task</th>
-        </tr>
-        <tr class="hoverEffect" *ngFor="let task of finishTask let i=index ">
-          <input id="check" type="checkbox" checked (click)="doUnfinish(i)">
-          <td id="task"> <s>{{task.name}}</s> </td>
-          <td id="task"> <s>{{task.taskDate}}</s> </td>
-        </tr>
-      </tbody>
-    </table> -->
+
   </div>
 </div>

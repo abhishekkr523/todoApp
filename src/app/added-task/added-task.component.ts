@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PopUpFormComponent } from '../pop-up-form/pop-up-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-added-task',
@@ -8,13 +10,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class AddedTaskComponent {
   @Input() finish: any;
   @Input() taskArray: any;
-  @Input() edit: number | undefined
   @Input() taskName: any
   @Input() taskDate: any
 
-  @Output() updateDataEvent= new EventEmitter<string>();
-  @Output() addToUpdate= new EventEmitter<string>();
+  constructor(public dialog: MatDialog) {
 
+  }
   doFinish(i: number) {
     const taskToMove = this.taskArray.splice(i, 1)[0];
     this.finish.push(taskToMove);
@@ -26,18 +27,27 @@ export class AddedTaskComponent {
     this.saveDataToLocalStorage();
   }
 
-  editTask(i: number) {
-    this.edit = i;
-    console.log("i", this.edit)
-    this.taskName = this.taskArray[i].name;
-    this.taskDate = this.taskArray[i].taskDate;
+  openDialog(i: number): void {
+    const taskData = this.taskArray[i]; // Get the data of the task at index i
+    
+    const dialogRef = this.dialog.open(PopUpFormComponent, {
+      width: '250px',
+      data: { taskName: taskData.taskName, taskDate: taskData.taskDate },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && (result.taskName || result.taskDate)) {
+        this.taskArray[i] = result;
+        this.saveDataToLocalStorage();
+      }
+    });
   }
+  
 
   // Save data to local storage
- saveDataToLocalStorage() {
-  localStorage.setItem('taskArray', JSON.stringify(this.taskArray));
-  localStorage.setItem('finishTask', JSON.stringify(this.finish));
-}
+  saveDataToLocalStorage() {
+    localStorage.setItem('taskArray', JSON.stringify(this.taskArray));
+    localStorage.setItem('finishTask', JSON.stringify(this.finish));
+  }
 
 
 }

@@ -1,17 +1,18 @@
 <table>
-    <tbody>
-      <tr>
-        <th>Added Task</th>
-      </tr>
-      <tr class="action-area" class="hoverEffect" *ngFor="let task of taskArray let i=index ">
-        <input id="check" type="checkbox" (click)="doFinish(i)">
-        <td id="task">{{task.name}}</td>
-        <td id="task">{{task.taskDate}}</td>
-        <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
-        <button class="prev_button button" (click)="updateDataEvent.emit(i.toString())" (click)=" addToUpdate.emit(i.toString())">
-            <img src="/assets/user-pen-solid.svg" alt="">
-          </button>
-          
-      </tr>
-    </tbody>
-  </table>
+  <tbody>
+    <tr>
+      <th>Added Task</th>
+    </tr>
+    <tr class="action-area" class="hoverEffect" *ngFor="let task of taskArray let i=index ">
+      <div class="left">
+      <input id="check" type="checkbox" (click)="doFinish(i)">
+      <td id="task">{{task.taskName}}</td>
+    </div>
+      <td id="task">{{task.taskDate}}</td>
+      <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
+      <button class="prev_button button" (click)="openDialog(i)">
+        <img src="/assets/user-pen-solid.svg" alt="">
+      </button>
+    </tr>
+  </tbody>
+</table>

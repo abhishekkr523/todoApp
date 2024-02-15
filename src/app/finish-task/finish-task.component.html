@@ -1,12 +1,14 @@
 <table>
-    <tbody>
-      <tr>
-        <th>Finish Task</th>
-      </tr>
-      <tr class="hoverEffect" *ngFor="let task of finish let i=index ">
+  <tbody>
+    <tr>
+      <th>Finish Task</th>
+    </tr>
+    <tr class="hoverEffect" *ngFor="let task of finish let i=index ">
+      <div class="left">
         <input id="check" type="checkbox" checked (click)="doUnfinish(i)">
-        <td id="task"> <s>{{task.name}}</s> </td>
-        <td id="task"> <s>{{task.taskDate}}</s> </td>
-      </tr>
-    </tbody>
-  </table>
+        <td id="task"> <s>{{task.taskName}}</s> </td>
+      </div>
+      <td id="task"> <s>{{task.taskDate}}</s> </td>
+    </tr>
+  </tbody>
+</table>

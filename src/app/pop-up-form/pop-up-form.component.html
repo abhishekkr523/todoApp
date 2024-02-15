@@ -2,10 +2,9 @@
 <div class="addData">
     <div class="addbtn">
         <div class="groupInput">
-            <!-- <input id="addtask" type="text" [(ngModel)]="taskName" placeholder="Task Name"> -->
             <mat-form-field appearance="fill">
                 <mat-label>Fill form field</mat-label>
-                <input matInput placeholder="Task Name"  id="text" name="text" [(ngModel)]="data.taskName">
+                <input matInput placeholder="Task Name" id="text" name="text" [(ngModel)]="data.taskName">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-hint>Hint</mat-hint>
             </mat-form-field>
@@ -18,13 +17,11 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
-            <!-- <input id="addtask" type="date" name="taskDate" [min]="minDate" [(ngModel)]="taskDate"> -->
-
         </div>
         <div class="groupBtn">
             <mat-dialog-actions>
                 <button mat-raised-button mat-dialog-close color="warn">Close</button>
-                <button mat-raised-button [mat-dialog-close]="'afterSave'" color="primary">Submitt</button>
+                <button mat-raised-button (click)="closeDialog()" color="primary">Submitt</button>
             </mat-dialog-actions>
         </div>
     </div>
