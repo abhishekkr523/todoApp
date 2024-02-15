@@ -27,10 +27,22 @@ export class AppComponent implements OnInit {
     this.loadDataFromLocalStorage();
   }
 
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(PopUpFormComponent, {
+  //     width: '250px',
+  //     data: { taskName: 'Initial Task Name', taskDate: new Date() },
+  //   });
+    
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log('The dialog was closed');
+  //     console.log('Task Name:', result.taskName);
+  //     console.log('Task Date:', result.taskDate);
+  //   });
+  // }
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpFormComponent, {
       width: '250px',
-      data: { taskName: 'Initial Task Name', taskDate: new Date() },
+      data: { taskName: this.taskName, taskDate: this.taskDate }, // Pass taskName and taskDate here
     });
     
     dialogRef.afterClosed().subscribe((result) => {
