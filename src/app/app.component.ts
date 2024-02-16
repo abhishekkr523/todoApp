@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpFormComponent, {
-      width: '250px',
+      width: '330px',height:'400px',
       data: { taskName: this.taskName, taskDate: this.taskDate }, // Pass taskName and taskDate here
     });
     

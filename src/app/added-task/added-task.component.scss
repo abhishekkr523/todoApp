@@ -58,6 +58,18 @@ table {
 .left {
     display: flex;
     align-items: center;
+    justify-content: start;
+    width: 25vw;
+}
+.right{
+    width: 25vw;
+    display: flex;
+    align-items: center;
     justify-content: center;
-
+}
+.mid{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 25vw;
 }

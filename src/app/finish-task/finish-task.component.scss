@@ -59,6 +59,12 @@
  .left {
      display: flex;
      align-items: center;
-     justify-content: center;
+     justify-content: start;
+     width: 25vw;
+     padding: 60px;
 
+ }
+ #task{
+    width: 75vw;
+    padding-left: 30px;
  }

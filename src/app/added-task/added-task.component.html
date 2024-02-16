@@ -5,14 +5,16 @@
     </tr>
     <tr class="action-area" class="hoverEffect" *ngFor="let task of taskArray let i=index ">
       <div class="left">
-      <input id="check" type="checkbox" (click)="doFinish(i)">
-      <td id="task">{{task.taskName}}</td>
-    </div>
-      <td id="task">{{task.taskDate}}</td>
-      <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
-      <button class="prev_button button" (click)="openDialog(i)">
-        <img src="/assets/user-pen-solid.svg" alt="">
-      </button>
+        <input id="check" type="checkbox" (click)="doFinish(i)">
+        <td id="task">{{task.taskName}}</td>
+      </div>
+      <td class="mid" id="task">{{task.taskDate|date : "fullDate" }}</td>
+      <div class="right">
+        <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
+        <button class="prev_button button" (click)="openDialog(i)">
+          <img src="/assets/user-pen-solid.svg" alt="">
+        </button>
+      </div>
     </tr>
   </tbody>
 </table>

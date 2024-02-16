@@ -1,28 +1,31 @@
+<header><h1>{{ isEditing ? 'Update Task Details' : 'Add task details'}}</h1></header>
 
-<div class="addData">
-    <div class="addbtn">
-        <div class="groupInput">
-            <mat-form-field appearance="fill">
-                <mat-label>Fill form field</mat-label>
-                <input matInput placeholder="Task Name" id="text" name="text" [(ngModel)]="data.taskName">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Hint</mat-hint>
-            </mat-form-field>
+    <div class="groupInput">
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Fill form field</mat-label>
+            <input matInput placeholder="Task Name" id="text" name="text" [(ngModel)]="data.taskName">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+            <!-- <mat-error *ngIf="taskNameError">{{ taskNameError }}</mat-error> -->
+            <p>{{ taskNameError }}</p>
+        </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="data.taskDate">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="data.taskDate" [min]="currentDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <!-- <mat-error *ngIf="taskDateError">{{ taskDateError }}</mat-error> -->
+            <p>{{ taskDateError }}</p>
+        </mat-form-field>
 
-        </div>
-        <div class="groupBtn">
-            <mat-dialog-actions>
-                <button mat-raised-button mat-dialog-close color="warn">Close</button>
-                <button mat-raised-button (click)="closeDialog()" color="primary">Submitt</button>
-            </mat-dialog-actions>
-        </div>
     </div>
-</div>
+    <div class="groupBtn">
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close color="warn">Close</button>
+            <button mat-raised-button (click)="closeDialog()" color="primary">{{ isEditing ? 'Update' : 'Submit'
+                }}</button>
+        </mat-dialog-actions>
+    </div>

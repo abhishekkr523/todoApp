@@ -31,8 +31,8 @@ export class AddedTaskComponent {
     const taskData = this.taskArray[i]; // Get the data of the task at index i
     
     const dialogRef = this.dialog.open(PopUpFormComponent, {
-      width: '250px',
-      data: { taskName: taskData.taskName, taskDate: taskData.taskDate },
+      width: '330px',height:'400px',
+      data: { taskName: taskData.taskName, taskDate: taskData.taskDate ,isEditing: true,isEditingHeading: true},
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result && (result.taskName || result.taskDate)) {
