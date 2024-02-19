@@ -8,11 +8,12 @@
         <input id="check" type="checkbox" (click)="doFinish(i)">
         <td id="task">{{task.taskName}}</td>
       </div>
-      <td class="mid" id="task">{{task.taskDate|date : "fullDate" }}</td>
+      <td class="mid">{{task.taskDate|date : "fullDate" }}</td>
+      <td class="mid" style="padding-left: 150px;"><img [src]="task.taskImage" alt=""></td>
       <div class="right">
-        <button class="prev_button button" (click)="deleteTask(i)"><img src="/assets/trash-solid.svg" alt=""></button>
+        <button class="prev_button button" (click)="deleteTask(i)"><mat-icon>delete</mat-icon></button>
         <button class="prev_button button" (click)="openDialog(i)">
-          <img src="/assets/user-pen-solid.svg" alt="">
+          <mat-icon>edit</mat-icon>
         </button>
       </div>
     </tr>

@@ -16,6 +16,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MatNativeDateModule } from '@angular/material/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule
     
   ],
   providers: [provideNativeDateAdapter(), provideAnimationsAsync()],

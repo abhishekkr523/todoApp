@@ -29,19 +29,21 @@ export class AddedTaskComponent {
 
   openDialog(i: number): void {
     const taskData = this.taskArray[i]; // Get the data of the task at index i
-    
+    console.log("image",taskData.taskImage)
     const dialogRef = this.dialog.open(PopUpFormComponent, {
-      width: '330px',height:'400px',
-      data: { taskName: taskData.taskName, taskDate: taskData.taskDate ,isEditing: true,isEditingHeading: true},
+      width: '350px', height: '460px',
+      data: { taskName: taskData.taskName, taskDate: taskData.taskDate, taskImage: taskData.taskImage, isEditing: true, isEditingHeading: true },
     });
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result && (result.taskName || result.taskDate)) {
         this.taskArray[i] = result;
         this.saveDataToLocalStorage();
       }
     });
+    
   }
-  
+
 
   // Save data to local storage
   saveDataToLocalStorage() {

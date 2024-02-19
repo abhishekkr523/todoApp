@@ -2,14 +2,11 @@
   <div class="container">
     <h1> <span>🙌 </span>Getting Started</h1>
     <div id="typewriter"></div>
-
-
-    <button mat-raised-button (click)="openDialog()">Add Task</button>
-
+    <div class="btn">
+      <button mat-raised-button (click)="openDialog()">Add Task</button>
+    </div>
     <app-added-task [finish]="finishTask" [taskArray]="taskArray" [taskName]="taskName"
-      [taskDate]="taskDate" ></app-added-task>
-
-
+      [taskDate]="taskDate"></app-added-task>
     <app-finish-task [finish]="finishTask" [taskArray]="taskArray"></app-finish-task>
 
   </div>

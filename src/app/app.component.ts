@@ -14,8 +14,10 @@ export class AppComponent implements OnInit {
   finishTask: any[] = [];
   taskName: string = '';
   taskDate: string = '';
+  taskImage: any;
   minDate: any;
   isEditing: boolean = false;
+  
 
   constructor(public dialog: MatDialog) {
     // Initialize minDate to the current date
@@ -28,12 +30,12 @@ export class AppComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopUpFormComponent, {
-      width: '330px',height:'400px',
-      data: { taskName: this.taskName, taskDate: this.taskDate }, // Pass taskName and taskDate here
+      width: '350px', height: '460px',
+      data: { taskName: this.taskName, taskDate: this.taskDate, taskImage: this.taskImage }, // Pass taskName and taskDate here
     });
     
     dialogRef.afterClosed().subscribe((result) => {
-      if (result && (result.taskName || result.taskDate)) {
+      if (result && (result.taskName || result.taskDate || result.taskImage)) {
         this.taskArray.push(result);
         this.saveDataToLocalStorage();
       }
