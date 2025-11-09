@@ -9,7 +9,7 @@ frontend:
         - npm run build
   artifacts:
     # 👇 Important: match your Angular output directory
-    baseDirectory: dist/todoapp
+    baseDirectory: dist/todoapp/browser
     files:
       - '**/*'
   cache:
